@@ -1,0 +1,101 @@
+{
+    "Catalog": { 
+        "Name": "SSISDB",
+        "Folder": [ 
+            {
+                "Name":"ImportToCSV", 
+                "Project": [
+                    {
+                        "Name": "ImportToCSV",
+                        "FilePath": "ImportToCSV.ispac",
+                        "Reference": [
+                            {
+                                "EnvName": "Dev",
+                                "EnvFolderName": "ImportToCSV"
+                            },
+                            {
+                                "EnvName": "Sit",
+                                "EnvFolderName": "ImportToCSV"
+                            }
+                        ]
+                    }
+                ],    
+                "Environment": [
+                    {
+                        "Name": "Dev",
+                        "Variable": [
+                            {
+                                "Name": "Var1",
+                                "Type": "String",
+                                "Value": "My value",
+                                "Sensitive": false,
+                                "Description": "My Value 1"
+                            },
+                            {
+                                "Name": "Var2",
+                                "Type": "String",
+                                "Value": "My value",
+                                "Sensitive": true,
+                                "Description": "My Value 2"
+                            }
+                        ]
+                    },
+                    {
+                        "Name": "Sit",
+                        "Variable": [
+                            {
+                                "Name": "Var1",
+                                "Type": "String",
+                                "Value": "My value",
+                                "Sensitive": false,
+                                "Description": "My Value 1"
+                            },
+                            {
+                                "Name": "Var2",
+                                "Type": "String",
+                                "Value": "My value",
+                                "Sensitive": true,
+                                "Description": "My Value 2"
+                            }
+                        ]
+                    } 
+                ]                  
+            }
+        ]                
+    }
+    ,
+    "Job":[
+        {
+            "Name":"ImportToCSV",
+             "Step":[
+                 {
+                   
+                        "Name":"Step1",    
+                        "Folder":"ImportToCSV",
+                        "Project":"ImportToCSV",
+                        "Package":"Package.dtsx",
+                        "Environment":
+                        {
+                            "Name":"sit",
+                            "Folder":"ImportToCSV"
+
+                        }
+                 } 
+                
+                 
+             ],
+             "Frequency":{
+                "Name":"Frequent",
+                "Type":"weekly",
+                "SubType":"Monday",
+                "Interval":"1",
+                "StartDate":"5/4/2018",
+                "StartTime":"9:00:00",
+                "EndDate":"23/6/2018",
+                "EndTime":"17:00:00"
+
+            }
+            
+        }
+    ]
+}
